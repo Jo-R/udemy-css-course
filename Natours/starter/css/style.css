@@ -8,22 +8,27 @@ Dark green: #28b485
 */
 
 /* RESET AND DEFAULTS */
-* {
+*,
+*::after,
+*::before {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit; /* will now inherit whatever set on body */
 }
 
-/* font properties inherited so do in body 
-    Lato included as google font in html
-*/
+html {
+    font-size: 62.5%; /* root font size equiv to 10px based on default browser size: makes it easy to convert to rem */
+}
+
+/* Lato included as google font in html */
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    /* font-size: 16px; */
     line-height: 1.7;
     color: #777;
-    padding: 30px; /* apply white border round whole page */
+    padding: 3rem; /* apply white border round whole page */
+    box-sizing: border-box;
 }
 
 /* MAIN CSS */
@@ -40,14 +45,14 @@ body {
     position: relative;
 }
 
-.logo-box {
+.header__logo-box {
     position: absolute;
-    top: 40px; /* measured against parent element with positon set to relative */
-    left: 40px;
+    top: 4rem; /* measured against parent element with positon set to relative */
+    left: 4rem;
 }
 
-.logo {
-    height: 35px;
+.header__logo {
+    height: 3.5rem;
 }
 
 /* .logo:hover {
@@ -59,7 +64,7 @@ body {
     then transform shifts it half of its own witdth on the x and y axis
     and it stays in center with vport changes
 */
-.text-box {
+.header__text-box {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -71,14 +76,14 @@ body {
     color: #fff;
     text-transform: uppercase;
     backface-visibility: hidden; /* corrects slight shakeiness on animation */
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
-.heading-primary-main {
+.heading-primary--main {
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
     animation-name: moveInLeft;
     animation-duration: 1s;
     animation-timing-function: ease-out;
@@ -87,11 +92,11 @@ body {
     
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.7rem;
     animation: moveInRight 1s ease-out;
 }
 
@@ -101,13 +106,13 @@ body {
 @keyframes moveInLeft {
     0% {
         opacity: 0;
-        transform: translateX(-100px) /* out to the left */
+        transform: translateX(-10rem) /* out to the left */
     }
     /* 60% {
         transform: rotate(180deg);
     } */
     80% {
-        transform: translateX(15px); /*goes to right a bit*/
+        transform: translateX(1rem); /*goes to right a bit*/
     }
     100% {
         opacity: 1;
@@ -118,10 +123,10 @@ body {
 @keyframes moveInRight {
     0% {
         opacity: 0;
-        transform: translateX(100px)
+        transform: translateX(10rem)
     }
     80% {
-        transform: translateX(-15px); 
+        transform: translateX(-1rem); 
     }
     100% {
         opacity: 1;
@@ -133,7 +138,7 @@ body {
 @keyframes moveInBottom {
     0% {
         opacity: 0;
-        transform: translateY(100px)
+        transform: translateY(10rem)
     }
     100% {
         opacity: 1;
@@ -145,36 +150,37 @@ body {
 .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 1.5rem 4rem;
     display: inline-block; /* is treated as text so text-align in text box works for this */
-    border-radius: 100px;
+    border-radius: 10rem;
     transition: all .2s; /* this applies to the hover and active - 
                 set transition on inital state to apply to other states */
     position: relative; /* for pseudo element after positoning*/
+    font-size: 1.6rem;
 }
 
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
 }
 
 .btn:active {
     transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0,0,0,.2); /* loase a bit of shadow and blur on depressing button */
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.2); /* loase a bit of shadow and blur on depressing button */
 }
 
-.btn-white {
+.btn--white {
     background-color: #fff;
     color: #777;
 }
 
 /* this is hidden behind the button - see hover::after for making visible*/
 .btn::after {
-    content: ""; /* have to specify this and display even if empty*/
+    content: ""; /* have to specify this and display */
     display: inline-block;
     height: 100%; /* of the btn height/width*/
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -182,7 +188,7 @@ body {
     transition: all .4s;
 }
 
-.btn-white::after {
+.btn--white::after {
     background-color: #fff;
 }
 
@@ -191,7 +197,7 @@ body {
     opacity: 0; /* will fade out cf transition to this set on initial state btn::after*/
 }
 
-.btn-animated {
+.btn--animated {
     animation: moveInBottom 1s ease-out .75s;
     animation-fill-mode: backwards; /* will apply 0% styles before animation starts if have delay */
 }
