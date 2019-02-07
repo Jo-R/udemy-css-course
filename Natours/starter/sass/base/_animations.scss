@@ -1,0 +1,45 @@
+/* browsers optimised to animate opactity and transform
+    can add more than one thing in each transorm
+*/
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem) /* out to the left */
+    }
+    /* 60% {
+        transform: rotate(180deg);
+    } */
+    80% {
+        transform: translateX(1rem); /*goes to right a bit*/
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0); /* looks how it looks without animation */
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem)
+    }
+    80% {
+        transform: translateX(-1rem); 
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0); 
+    }
+}
+
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(10rem)
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0); 
+    }
+}

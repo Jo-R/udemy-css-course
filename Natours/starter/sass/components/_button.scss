@@ -1,0 +1,60 @@
+.btn {
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block; /* is treated as text so text-align in text box works for this */
+        border-radius: 10rem;
+        transition: all .2s; /* this applies to the hover and active - 
+                    set transition on inital state to apply to other states */
+        position: relative; /* for pseudo element after positoning*/
+        font-size: 1.6rem;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black,.2);
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0; /* will fade out cf transition to this set on initial state btn::after*/
+        }
+    
+    }
+
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black,.2); /* loase a bit of shadow and blur on depressing button */
+    }
+
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after {
+            background-color: $color-white;
+        }
+    }
+
+    /* this is hidden behind the button - see hover::after for making visible*/
+    &::after {
+        content: ""; /* have to specify this and display */
+        display: inline-block;
+        height: 100%; /* of the btn height/width*/
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
+
+    &--animated {
+        animation: moveInBottom 1s ease-out .75s;
+        animation-fill-mode: backwards; /* will apply 0% styles before animation starts if have delay */
+    }
+}
+
+

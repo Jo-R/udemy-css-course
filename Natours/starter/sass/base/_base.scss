@@ -1,0 +1,15 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; /* will now inherit whatever set on body */
+}
+
+html {
+    font-size: 62.5%; /* root font size equiv to 10px based on default browser size: makes it easy to convert to rem */
+}
+
+body {
+    box-sizing: border-box;
+}

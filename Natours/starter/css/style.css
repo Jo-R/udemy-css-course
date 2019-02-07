@@ -22,59 +22,6 @@ body {
   /* apply white border round whole page */
   box-sizing: border-box; }
 
-/* MAIN CSS */
-.header {
-  height: 95vh;
-  /* 95% of viewport height */
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
-  background-size: cover;
-  background-position: top;
-  /* controls how it crops out when change vport size */
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-  /*each pair = x y for a corner...can do cool shapes - online generators exist */
-  position: relative;
-  /* centring the heading text and button 
-    top and left takes the start and top of div to 50% of parent (top 40 cf clip-path makes 50 look off)
-    then transform shifts it half of its own witdth on the x and y axis
-    and it stays in center with vport changes
-    */ }
-  .header__logo-box {
-    position: absolute;
-    top: 4rem;
-    /* measured from top of parent element with positon set to relative */
-    left: 4rem; }
-  .header__logo {
-    height: 3.5rem; }
-  .header__text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center; }
-
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  backface-visibility: hidden;
-  /* corrects slight shakeiness on animation */
-  margin-bottom: 6rem; }
-  .heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-    /* animation-delay: 3s; */
-    /* animation-iteration-count: 3; */ }
-  .heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.7rem;
-    animation: moveInRight 1s ease-out; }
-
 /* browsers optimised to animate opactity and transform
     can add more than one thing in each transorm
 */
@@ -159,3 +106,55 @@ body {
     animation: moveInBottom 1s ease-out .75s;
     animation-fill-mode: backwards;
     /* will apply 0% styles before animation starts if have delay */ }
+
+.header {
+  height: 95vh;
+  /* 95% of viewport height */
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  /* controls how it crops out when change vport size */
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  /*each pair = x y for a corner...can do cool shapes - online generators exist */
+  position: relative;
+  /* centring the heading text and button 
+    top and left takes the start and top of div to 50% of parent (top 40 cf clip-path makes 50 look off)
+    then transform shifts it half of its own witdth on the x and y axis
+    and it stays in center with vport changes
+    */ }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    /* measured from top of parent element with positon set to relative */
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  /* corrects slight shakeiness on animation */
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /* animation-delay: 3s; */
+    /* animation-iteration-count: 3; */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.7rem;
+    animation: moveInRight 1s ease-out; }
