@@ -1,0 +1,200 @@
+
+$color-primary: #55c75a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+
+$color-grey-dark: #777;
+$color-white: #fff;
+
+
+/* RESET AND DEFAULTS */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; /* will now inherit whatever set on body */
+}
+
+html {
+    font-size: 62.5%; /* root font size equiv to 10px based on default browser size: makes it easy to convert to rem */
+}
+
+/* Lato included as google font in html */
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    /* font-size: 16px; */
+    line-height: 1.7;
+    color: $color-grey-dark;
+    padding: 3rem; /* apply white border round whole page */
+    box-sizing: border-box;
+}
+
+/* MAIN CSS */
+.header {
+    height: 95vh; /* 95% of viewport height */
+    background-image: linear-gradient(
+            to right bottom, 
+            rgba($color-primary-light, 0.80), 
+            rgba($color-primary-dark, 0.80)), 
+        url(../img/hero.jpg);
+    background-size: cover;
+    background-position: top; /* controls how it crops out when change vport size */
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); /*each pair = x y for a corner...can do cool shapes - online generators exist */
+    position: relative;
+}
+
+.header__logo-box {
+    position: absolute;
+    top: 4rem; /* measured from top of parent element with positon set to relative */
+    left: 4rem;
+}
+
+.header__logo {
+    height: 3.5rem;
+}
+
+/* centring the heading text and button 
+    top and left takes the start and top of div to 50% of parent (top 40 cf clip-path makes 50 look off)
+    then transform shifts it half of its own witdth on the x and y axis
+    and it stays in center with vport changes
+*/
+.header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.heading-primary {
+    color: $color-white;
+    text-transform: uppercase;
+    backface-visibility: hidden; /* corrects slight shakeiness on animation */
+    margin-bottom: 6rem;
+}
+
+.heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /* animation-delay: 3s; */
+    /* animation-iteration-count: 3; */
+    
+}
+
+.heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.7rem;
+    animation: moveInRight 1s ease-out;
+}
+
+/* browsers optimised to animate opactity and transform
+    can add more than one thing in each transorm
+*/
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem) /* out to the left */
+    }
+    /* 60% {
+        transform: rotate(180deg);
+    } */
+    80% {
+        transform: translateX(1rem); /*goes to right a bit*/
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0); /* looks how it looks without animation */
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem)
+    }
+    80% {
+        transform: translateX(-1rem); 
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0); 
+    }
+}
+
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(10rem)
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0); 
+    }
+}
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block; /* is treated as text so text-align in text box works for this */
+    border-radius: 10rem;
+    transition: all .2s; /* this applies to the hover and active - 
+                set transition on inital state to apply to other states */
+    position: relative; /* for pseudo element after positoning*/
+    font-size: 1.6rem;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.2); /* loase a bit of shadow and blur on depressing button */
+}
+
+.btn--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+}
+
+/* this is hidden behind the button - see hover::after for making visible*/
+.btn::after {
+    content: ""; /* have to specify this and display */
+    display: inline-block;
+    height: 100%; /* of the btn height/width*/
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn--white::after {
+    background-color: $color-white;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; /* will fade out cf transition to this set on initial state btn::after*/
+}
+
+.btn--animated {
+    animation: moveInBottom 1s ease-out .75s;
+    animation-fill-mode: backwards; /* will apply 0% styles before animation starts if have delay */
+}
+
