@@ -32,28 +32,25 @@ body {
   /* controls how it crops out when change vport size */
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
   /*each pair = x y for a corner...can do cool shapes - online generators exist */
-  position: relative; }
-
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  /* measured from top of parent element with positon set to relative */
-  left: 4rem; }
-
-.header__logo {
-  height: 3.5rem; }
-
-/* centring the heading text and button 
+  position: relative;
+  /* centring the heading text and button 
     top and left takes the start and top of div to 50% of parent (top 40 cf clip-path makes 50 look off)
     then transform shifts it half of its own witdth on the x and y axis
     and it stays in center with vport changes
-*/
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center; }
+    */ }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    /* measured from top of parent element with positon set to relative */
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
 
 .heading-primary {
   color: #fff;
@@ -61,24 +58,22 @@ body {
   backface-visibility: hidden;
   /* corrects slight shakeiness on animation */
   margin-bottom: 6rem; }
-
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-  /* animation-delay: 3s; */
-  /* animation-iteration-count: 3; */ }
-
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.7rem;
-  animation: moveInRight 1s ease-out; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /* animation-delay: 3s; */
+    /* animation-iteration-count: 3; */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.7rem;
+    animation: moveInRight 1s ease-out; }
 
 /* browsers optimised to animate opactity and transform
     can add more than one thing in each transorm
@@ -116,58 +111,51 @@ body {
     opacity: 1;
     transform: translate(0); } }
 
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  display: inline-block;
-  /* is treated as text so text-align in text box works for this */
-  border-radius: 10rem;
-  transition: all .2s;
-  /* this applies to the hover and active - 
-                set transition on inital state to apply to other states */
-  position: relative;
-  /* for pseudo element after positoning*/
-  font-size: 1.6rem; }
-
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-
-.btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-  /* loase a bit of shadow and blur on depressing button */ }
-
-.btn--white {
-  background-color: #fff;
-  color: #777; }
-
-/* this is hidden behind the button - see hover::after for making visible*/
-.btn::after {
-  content: "";
-  /* have to specify this and display */
-  display: inline-block;
-  height: 100%;
-  /* of the btn height/width*/
-  width: 100%;
-  border-radius: 10rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: all .4s; }
-
-.btn--white::after {
-  background-color: #fff; }
-
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0;
-  /* will fade out cf transition to this set on initial state btn::after*/ }
-
-.btn--animated {
-  animation: moveInBottom 1s ease-out .75s;
-  animation-fill-mode: backwards;
-  /* will apply 0% styles before animation starts if have delay */ }
+.btn {
+  /* this is hidden behind the button - see hover::after for making visible*/ }
+  .btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    /* is treated as text so text-align in text box works for this */
+    border-radius: 10rem;
+    transition: all .2s;
+    /* this applies to the hover and active - 
+                    set transition on inital state to apply to other states */
+    position: relative;
+    /* for pseudo element after positoning*/
+    font-size: 1.6rem; }
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .btn:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+      /* will fade out cf transition to this set on initial state btn::after*/ }
+  .btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    /* loase a bit of shadow and blur on depressing button */ }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white::after {
+      background-color: #fff; }
+  .btn::after {
+    content: "";
+    /* have to specify this and display */
+    display: inline-block;
+    height: 100%;
+    /* of the btn height/width*/
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s; }
+  .btn--animated {
+    animation: moveInBottom 1s ease-out .75s;
+    animation-fill-mode: backwards;
+    /* will apply 0% styles before animation starts if have delay */ }
