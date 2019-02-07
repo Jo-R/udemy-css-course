@@ -47,17 +47,13 @@ body {
 
 .header__logo-box {
     position: absolute;
-    top: 4rem; /* measured against parent element with positon set to relative */
+    top: 4rem; /* measured from top of parent element with positon set to relative */
     left: 4rem;
 }
 
 .header__logo {
     height: 3.5rem;
 }
-
-/* .logo:hover {
-    animation: moveInRight 1s linear;
-} */
 
 /* centring the heading text and button 
     top and left takes the start and top of div to 50% of parent (top 40 cf clip-path makes 50 look off)
