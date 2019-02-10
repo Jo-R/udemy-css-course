@@ -1,6 +1,5 @@
 .row {
     max-width: $grid-width; //1140px
-    background-color: #eee;
     margin: 0 auto;
 
     &:not(:last-child) { //everything except last child
@@ -11,7 +10,6 @@
 
     //columns are always inside rows
     [class^="col-"] { //select all class that start col-
-        background-color: orangered;
         float: left;
 
         &:not(:last-child) {
