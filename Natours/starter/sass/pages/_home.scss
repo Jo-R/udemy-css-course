@@ -18,5 +18,10 @@
     & > * { //select all direct children
         transform: skewY(7deg); //correct the skew on the boxes 
     }
+}
 
+.section-tours {
+    background-color: $color-grey-light-1;
+    padding: 25rem 0 50rem 0;
+    margin-top: -10rem;
 }
