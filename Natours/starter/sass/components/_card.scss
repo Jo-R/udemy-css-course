@@ -1,14 +1,13 @@
 .card {
+    //FUNCTIONALITY
     //define perspective for rotation of children
     perspective: 150rem; //lower value more dramatic perspecitve 
     -moz-perspective: 150rem;
     position: relative;
-    height: 50rem; //have to specifiy height same as children to stop heigh collapse and losing perspective setting
+    height: 52rem; //have to specifiy height same as children to stop heigh collapse and losing perspective setting
 
     &__side {
-        color: blue;
-        font-size: 2rem;
-        height: 50rem;
+        height: 52rem;
         transition: all .8s ease;
         position: absolute;
         top: 0;
@@ -16,6 +15,7 @@
         width: 100%;
         backface-visibility: hidden;
         border-radius: 3px;
+        overflow: hidden; //stop background image overlfowing corners (border radius goes if that happens)
         box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
 
         &--front {
@@ -32,10 +32,71 @@
     }
     
     &:hover &__side--front { //.card:hover .card__side (when hover on card, card__side transforms)
-        transform: rotateY(180deg);
+        transform: rotateY(-180deg);
     }
 
     &:hover &__side--back { 
         transform: rotateY(0);
+    }
+
+    //FRONT SIDE STYLING
+    &__picture {
+        background-size: cover;
+        height: 23rem;
+        background-blend-mode: screen;
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(../img/nat-5.jpg); //rel links from CSS file that it get compiled to!
+        }
+
+        &--2 {
+            background-image: url(../img/nat-5.jpg); 
+        }
+
+        &--3 {
+            background-image: url(../img/nat-5.jpg); 
+        }
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-align: right;
+        color: $color-white;
+        position: absolute;
+        top: 12rem;
+        right: 2rem;
+        width: 70%;
+    }
+
+    &__heading-span {
+        padding: 1rem 1.5rem;
+        -webkit-box-decoration-break: clone; //adds padding to the bit where line breaks
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .85), rgba($color-secondary-dark, .85));
+        }
+    }
+
+    &__details {
+        padding: 3rem;
+
+        ul {
+            list-style: none;
+            width: 80%;
+            margin: 0 auto;
+
+            li {
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 1rem;
+                
+                &:not(:last-child) {
+                    border-bottom: 1px solid $color-grey-light-2;
+                }
+            }
+        }
     }
 }
