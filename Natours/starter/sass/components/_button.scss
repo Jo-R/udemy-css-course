@@ -37,6 +37,15 @@
         }
     }
 
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+
+        &::after {
+            background-color: $color-primary;
+        }
+    }
+
     /* this is hidden behind the button - see hover::after for making visible*/
     &::after {
         content: ""; /* have to specify this and display */
