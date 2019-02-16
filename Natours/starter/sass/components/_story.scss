@@ -1,0 +1,63 @@
+.story {
+    width: 75%;
+    margin: 0 auto; //is it a block wihtin a block? that the quesiotn when using this
+    box-shadow: 0 3rem 6rem rgba($color-black, .1);
+    background-color: rgba($color-white, .6);
+    border-radius: 3px;
+    padding: 6rem;
+    padding-left: 9rem; //6 + the 3 frm the transform on ths shape
+    font-size: $default-font-size;
+    transform: skewX(-12deg);
+
+    // & > * { //in this case doing this wouldn't work because there's already the transform on the shape and that is more specific so overrides (can't have 2x transforms) - so apply this skew direct the children.
+    //     transform: skew(12deg);
+    // }
+
+    &__shape {
+        width:15rem;
+        height: 15rem;
+        float:left;
+        //shape-outside defines where the content (ie the text) flows around this element
+        shape-outside: circle(50% at 50% 50%); //radius at center horiz and vertically: elem must be floated and have to defined dimension (ht and width) to work
+        clip-path: circle(50% at 50% 50%);
+        transform: translateX(-3rem) skew(12deg);
+        position: relative;
+    }
+
+    &__img {
+        height: 100%;
+        transform: translateX(-4rem) scale(1.4); //center the person in the canoe img
+        transition: all .4s;
+    }
+
+    &__text {
+        transform: skew(12deg);
+    }
+
+    &__caption {
+        //centrerd on image (center the element using the abs and transform and the text)
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        opacity: 0;
+        transition: all 4s;
+        backface-visibility: hidden; //to fix slight judder - this fixes all kinds of weird animation and transform issues apparently altho I'm not getting some of them (course is from 2017!)
+    }
+
+    //when hover on the story, change the caption
+    &:hover &__caption {
+        opacity: 1;
+        transform: translate(-50%, -50%); //put Y axis of caption back to centre from lower down: need to use same transform as above
+    }
+
+    //when hover on the story change the img
+    &:hover &__img {
+        transform: translateX(-4rem) scale(1);
+        filter: blur(3px) brightness(80%);
+    }
+}
