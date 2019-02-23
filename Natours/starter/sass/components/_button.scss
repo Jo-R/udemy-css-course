@@ -1,4 +1,5 @@
 .btn {
+    &, //this is just btn
     &:link,
     &:visited {
         text-transform: uppercase;
@@ -10,6 +11,10 @@
                     set transition on inital state to apply to other states */
         position: relative; /* for pseudo element after positoning*/
         font-size: $default-font-size;
+
+        //change for the <button> element
+        border: none;
+        cursor: pointer;
     }
 
     &:hover {
@@ -23,7 +28,9 @@
     
     }
 
-    &:active {
+    &:active,
+    &:focus { //resylt the button focus from that default blue outline
+        outline: none;
         transform: translateY(-1px);
         box-shadow: 0 .5rem 1rem rgba($color-black,.2); /* loase a bit of shadow and blur on depressing button */
     }
