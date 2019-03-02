@@ -1,0 +1,150 @@
+.navigation {
+    &__checkbox {
+        display: none; //hidden checkbox so can use on checked for active states!
+    }
+
+    &__button { //see also ICON section below
+        background-color: $color-white;
+        height: 7rem; //ht and width slightly bigger than the green background below
+        width: 7rem;
+        position: fixed;
+        top: 6rem; //and half a rem further to top and right than green background
+        right: 6rem;
+        border-radius: 50%;
+        z-index: 2000;
+        box-shadow: 0 1rem 3rem rgba($color-black, .1);
+        text-align: center;
+        cursor: pointer;
+    }
+
+    &__background { //the green background - starts behind the white button and grows to fill page
+        height: 6rem;
+        width: 6rem;
+        border-radius: 50%;
+        position: fixed; //doesn't go when scroll
+        top: 6.5rem;
+        right: 6.5rem;
+        background-image: radial-gradient($color-primary-light, $color-primary-dark);
+        z-index: 1000;
+        transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1); //see online tool for bexier
+        // this is behind the button - see checkbox:checked below for this to appear: bascially we make it bigger!
+    }
+
+    &__nav { //this is the full screen green background with links
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 1500;
+        opacity: 0; //this makes it opaque but the links will still be there so also...
+        width: 0; //..these get brought back by checkbox hack...see &__checkbox:checked below
+        transition: all .8s cubic-bezier(0.68, 0.55, 0.265, 1.55);
+        // background-color: orangered;
+    }
+
+    &__list { //center the links within the nav
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        list-style: none;
+        width: 100%;
+    }
+
+    &__item {
+        margin: 1rem;
+    }
+
+    &__link {
+        &:link,
+        &:visited {
+            display: inline-block; //for padding etc
+            font-size: 3rem;
+            font-weight: 300;
+            padding: 1rem 2rem;
+            color: $color-white;
+            text-decoration: none;
+            text-transform: uppercase;
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%); //solid color gradient for animation
+            background-size: 225%; //so the gradient will be transparent over the text and the white is off the side, then when position changes on hover it shifts the white into view
+            transition: all .4s;
+
+            span {
+                margin-right: 1.5rem;
+                display: inline-block;
+            }
+        }
+
+        &:hover,
+        &:active {
+            background-position: 100%; //shift the entire thing 100% so white appears
+            color: $color-primary;
+            transform: translateX(1rem); //and move slightly to right
+        }
+        
+    }
+
+    &__checkbox:checked ~ &__background {
+        transform: scale(80);
+    }
+
+    &__checkbox:checked ~ &__nav {
+        opacity: 1;
+        width: 100%;
+    }
+
+    //ICON: uses before and after to duplicate a single (span) element and these get rotated/hidden to make the cross
+    &__icon {
+        position: relative;
+        margin-top: 3.5rem;
+
+        &,
+        &::before,
+        &::after {
+            width: 3rem;
+            height: 2px;
+            background-color: $color-grey-dark-3;
+            display: inline-block;
+        }
+
+        &::before,
+        &::after {
+            content: ""; 
+            position: absolute;
+            left: 0;
+            transition: all .2s;
+        }
+
+        &::before {
+            top: -.8rem; //position it up
+        }
+
+        &::after {
+            top: .8rem; //position it down
+        }
+    }
+
+    &__button:hover &__icon::before {
+        top: -1rem;
+    }
+
+    &__button:hover &__icon::after {
+        top: 1rem;
+    }
+
+    &__checkbox:checked + &__button &__icon {
+        background-color: transparent; //if messed with size would mess with positon of before and after
+    }
+
+    &__checkbox:checked + &__button &__icon::before {
+        top: 0;
+        transform: rotate(135deg); //180deg - 45deg so they rotate more but end up in a X
+    }
+
+    &__checkbox:checked + &__button &__icon::after {
+        top: 0;
+        transform: rotate(-135deg);
+
+    }
+}
