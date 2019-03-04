@@ -1,0 +1,82 @@
+.popup {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba($color-black, .8);
+    z-index: 99999;
+    opacity: 0; //see the target styles below for how this is made active!
+    visibility: hidden;
+    transition: all .5s;
+
+    &__close {
+        &:link,
+        &:visited {
+            color: $color-grey-dark;
+            position: absolute;
+            top: 2.5rem;
+            right: 2.5rem;
+            font-size: 3rem;
+            text-decoration: none;
+            display: inline-block;
+            line-height: 1; //the elemnt is taller than just the X
+        }
+
+        &:hover {
+            color: $color-primary;
+        }
+    }
+
+    &__content {
+        width: 75%;
+        background-color: $color-white;
+        box-shadow: 0 2rem 4rem rgba($color-black, .2);
+        @include absCenter;
+        border-radius: 3px;
+        display: table; //using this to arrange the left and right so have same height
+        overflow: hidden;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(.5); //have to rpt the tranform from the mixin cos can only have oe transform property on a each set of styles
+        transition: all .4s .2s; //last property is aslight delay
+    }
+
+    &__left {
+        width: 33.33%;
+        display: table-cell;
+    }
+
+    &__right {
+        width: 66.67%;
+        display: table-cell;
+        vertical-align: middle; //property that can be used on table cells - puts it in middle compared to others
+        padding: 3rem 5rem;
+    }
+
+    &__img {
+        display: block;
+        width: 100%;
+    }
+
+    &__text {
+        font-size: 1.4rem;
+        margin-bottom: 4rem;
+        column-count: 2;
+        column-gap: 4rem;
+        column-rule: 1px solid $color-grey-light-2;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        -webkit-hyphens: auto; 
+        hyphens: auto; //relies on lang being set in html ISN'T WORKING??
+    }
+
+    &:target { //this is applied when element is target of a click (this is done via anchor in the flippy card btns)
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:target &__content {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1); 
+    }
+}
