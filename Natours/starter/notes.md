@@ -78,6 +78,34 @@ Is an algo that calculates boxes and determines the layout of these boxes for ea
         - e.g. 7-1 pattern
 
 
+## media queries
+max-width desktop first (because we want the media query stuff to leave desktop code alone)
+
+min-width mobile first (because we want the stuff in the media queries to leave our mobile design alone)
+
+media queries override specific parts of css for specific widths (ofc)
+
+eg so 500px...
+both max-width 600px and max-width 900px will apply 
+code order is what matters for overriding with media queries and this is why we put them at the end
+
+## breakpoints
+bad - use width of a few popular devices: optimising for specific devices, not future proof
+
+good - look at all most used device widths and group them -> breakpoints between similar device widths
+
+perfect - ignore devices, look at content - when does the design break on resize? that's your breakpoint...this is a difficult way of doing it tho!
+
+we're gonna use the good way in the course...
+
+do one for: phone (max width 600px), portrait tablet (up to 900px), landscape tablet (up to 1200) and desktop (norml up to 1800px and then more for biiig desktop)
+
+
+
+
+
+
+
 
 
 
