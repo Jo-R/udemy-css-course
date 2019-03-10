@@ -10,6 +10,10 @@
     clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); /*each pair = x y for a corner...can do cool shapes - online generators exist */
     position: relative;
 
+    @include respond(phone) { //the slant on the polygon is too steep
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+
     &__logo-box {
         position: absolute;
         top: 4rem; /* measured from top of parent element with positon set to relative */

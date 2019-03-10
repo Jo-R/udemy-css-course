@@ -4,6 +4,15 @@
 
     &:not(:last-child) { //everything except last child
         margin-bottom: $gutter-vertical;
+
+        @include respond(tab-port) {
+            margin-bottom: $gutter-vertical-small;
+        }
+    }
+
+    @include respond(tab-port) {
+        max-width: 50rem; //we don't want the stacked versions to be 100% of the larger grid width
+        padding: 0 3rem;
     }
 
     @include clearfix;
@@ -14,6 +23,15 @@
 
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
+
+            @include respond(tab-port) {
+                margin-right: 0; //no need for gutter if they stack
+                margin-bottom: $gutter-vertical-small; //but they do now need a bottom margin
+            }
+        }
+
+        @include respond(tab-port) {
+            width: 100% !important; //once at 900px set col width to 100%
         }
     }
 

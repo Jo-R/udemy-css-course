@@ -34,6 +34,12 @@ $breakpoint arg choices:
 - tab-port
 - tab-land
 - big-desktop
+
+ORDER we will work in
+start with base/typography
+then general layout and grid
+then page layouts
+the componenets
 */
 @mixin respond($breakpoint) {
     @if $breakpoint == phone {
