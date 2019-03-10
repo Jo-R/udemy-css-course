@@ -7,7 +7,24 @@
 }
 
 html {
+    //this defines what 1rem is - so changing it scales everything up and down if using rem
     font-size: 62.5%; /* root font size equiv to 10px based on default browser size: makes it easy to convert to rem */
+
+    //don't ned a phone one cos tab-port is max-width so will also apply and 50% is smallest we want the text
+    @include respond(tab-land) {
+        font-size: 56.25%; //1rem = 9px
+    }
+
+    //need to put this second: if tab-port size comes before tab-land both apply (since < max-width for both) 
+    //tab-land would win - so order is important here since if both apply we want tab-port to apply so 
+    //make sure it comes latest
+    @include respond(tab-port) { 
+        font-size: 50%; //1rem = 8px
+    }
+
+    @include respond(big-desktop) {
+        font-size: 75%; //1rem = 12px
+    }
 }
 
 body {

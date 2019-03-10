@@ -1,3 +1,24 @@
+/*
+0-600px phone
+600-900px: table portrait
+900-1200px: tablet landscape
+{1200-1800 is normal styles}
+1800+: big desktop
+so its desktop first so using max-width
+
+1re/em in media query = font size determined by browser because not afected by what we do with 
+fnt size in html...
+so its good to use these cf if user has changed it
+using ems as work better cross browser for media queries
+
+so, 1em = 16px in this case
+
+$breakpoint arg choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+*/
 *,
 *::after,
 *::before {
@@ -9,6 +30,15 @@
 html {
   font-size: 62.5%;
   /* root font size equiv to 10px based on default browser size: makes it easy to convert to rem */ }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 body {
   box-sizing: border-box; }

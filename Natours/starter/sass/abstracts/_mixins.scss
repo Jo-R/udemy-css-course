@@ -12,3 +12,42 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+// MEDIA QUERY MANAGER
+/*
+0-600px phone
+600-900px: table portrait
+900-1200px: tablet landscape
+{1200-1800 is normal styles}
+1800+: big desktop
+so its desktop first so using max-width
+
+1re/em in media query = font size determined by browser because not afected by what we do with 
+fnt size in html...
+so its good to use these cf if user has changed it
+using ems as work better cross browser for media queries
+
+so, 1em = 16px in this case
+
+$breakpoint arg choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+*/
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media (max-width: 37.5em) {@content}; //:@content pulls in the properties defined elsewhere
+    }
+    @if $breakpoint == tab-port {
+        @media (max-width: 56.25em) {@content}; 
+    }
+    @if $breakpoint == tab-land {
+        @media (max-width: 75em) {@content}; 
+    }
+    @if $breakpoint == big-desktop {
+        @media (min-width: 112.5em) {@content}; 
+    }
+
+}
+
