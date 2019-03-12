@@ -627,7 +627,7 @@ body {
   @media (max-width: 56.25em) {
     .row {
       max-width: 50rem;
-      padding: 0 3rem; } }
+      padding: 0 1rem; } }
   .row::after {
     content: "";
     display: table;
@@ -667,6 +667,9 @@ body {
   .footer__logo-box {
     text-align: center;
     margin-bottom: 8rem; }
+    @media (max-width: 56.25em) {
+      .footer__logo-box {
+        margin-bottom: 4rem; } }
   .footer__logo {
     width: 15rem;
     height: auto; }
