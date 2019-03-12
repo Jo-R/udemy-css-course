@@ -2,6 +2,10 @@
     background-color: $color-grey-light-1;
     padding: 25rem 0;
     margin-top: -20vh; //this moves it up to start of clipped polygon in header
+
+    @include respond(tab-port) {
+        padding: 20rem 0; //this is actually bad on my terrible old monitor but is cool on new laptop screen using responsive veiw in dev toolds
+    }
 }
 
 .section-features {
@@ -18,22 +22,38 @@
     & > * { //select all direct children
         transform: skewY(7deg); //correct the skew on the boxes 
     }
+
+    @include respond(tab-port) {
+        padding: 10rem 0; 
+    }
 }
 
 .section-tours {
     background-color: $color-grey-light-1;
     padding: 25rem 0 15rem 0;
     margin-top: -10rem;
+
+    @include respond(tab-port) {
+        padding: 20rem 0 10rem 0; 
+    }
 }
 
 .section-stories {
     padding: 15rem 0;
     position: relative; //cf bg-video
+
+    @include respond(tab-port) {
+        padding: 10rem 0; 
+    }    
 }
 
 .section-book {
     padding: 15rem 0;
     background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+
+    @include respond(tab-port) {
+        padding: 10rem 0; 
+    }    
 }
 
 .book {
