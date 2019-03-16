@@ -637,14 +637,23 @@ body {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.5);
     transition: all .4s .2s; }
+    @media (max-width: 56.25em) {
+      .popup__content {
+        display: block; } }
   .popup__left {
     width: 33.33%;
     display: table-cell; }
+    @media (max-width: 56.25em) {
+      .popup__left {
+        width: 0%; } }
   .popup__right {
     width: 66.67%;
     display: table-cell;
     vertical-align: middle;
     padding: 3rem 5rem; }
+    @media (max-width: 56.25em) {
+      .popup__right {
+        width: 100%; } }
   .popup__img {
     display: block;
     width: 100%; }
