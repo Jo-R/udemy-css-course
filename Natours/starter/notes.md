@@ -100,6 +100,16 @@ we're gonna use the good way in the course...
 
 do one for: phone (max width 600px), portrait tablet (up to 900px), landscape tablet (up to 1200) and desktop (norml up to 1800px and then more for biiig desktop)
 
+## Responsive images
+performance as well as design
+    > avoid downloading large images for smaller screens
+
+3 use cases:
+1. resolution switching: decrease img resolution on smaller screen
+2. density switching: px density rather than screen size (1/2 img resolution on 1x screen, 2x screen are high res: 2 physical pixels to display 1px of design)
+3. Art direction: different img on small screen
+
+
 
 
 
