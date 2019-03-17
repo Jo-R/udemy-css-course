@@ -109,6 +109,9 @@ performance as well as design
 2. density switching: px density rather than screen size (1/2 img resolution on 1x screen, 2x screen are high res: 2 physical pixels to display 1px of design)
 3. Art direction: different img on small screen
 
+## browser support
+@supports for graceful degradation
+
 
 
 
