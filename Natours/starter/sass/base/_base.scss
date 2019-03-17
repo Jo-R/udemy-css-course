@@ -36,4 +36,11 @@ body {
     @include respond(tab-port) {
         padding: 0; //remove white border on smaller widths
     }
+
+    //change the text selection ie the usually blue highlight
+    ::selection {
+        background-color: $color-primary;
+        color: $color-white;
+    }
 }
+
