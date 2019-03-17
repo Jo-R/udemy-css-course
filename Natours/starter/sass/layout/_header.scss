@@ -4,11 +4,24 @@
             to right bottom, 
             rgba($color-primary-light,0.80), 
             rgba($color-primary-dark,0.80)), 
-        url(../img/hero.jpg);
+        url(../img/hero-small.jpg);
     background-size: cover;
     background-position: top; /* controls how it crops out when change vport size */
     clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); /*each pair = x y for a corner...can do cool shapes - online generators exist */
     position: relative;
+
+    // resolution based media query - dpi is that of apple retina display (high res)
+    // phones have high dpi (2x) but say max-width is 600px then the max image size we need is 1200px
+    //so the small img is still the right one to use
+    // OR (comma) regardless of resolution show big img if >2k px width
+    @media (min-resolution: 192dpi) and (min-width: 37.5em),
+    (min-width: 125em) {
+        background-image: linear-gradient(
+            to right bottom, 
+            rgba($color-primary-light,0.80), 
+            rgba($color-primary-dark,0.80)), 
+        url(../img/hero.jpg);
+    }
 
     @include respond(phone) { //the slant on the polygon is too steep
         clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
